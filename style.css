@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑", "宋体", sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    line-height: 1.7;
+}
+
+.导航栏 {
+    background-color: #1e293b;
+    padding: 16px 32px;
+    box-shadow: 0 2px 8px #000;
+}
+
+.导航容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.姓名 {
+    font-size: 28px;
+    color: #38bdf8;
+}
+
+.个人信息 {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.欢迎区 {
+    max-width: 1200px;
+    margin: 48px auto;
+    padding: 0 32px;
+    text-align: center;
+}
+
+.欢迎区 h2 {
+    font-size: 36px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.欢迎区 p {
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+.课程区域 {
+    max-width: 1200px;
+    margin: 64px auto;
+    padding: 0 32px;
+}
+
+.区域标题 {
+    font-size: 28px;
+    margin-bottom: 32px;
+    color: #38bdf8;
+    border-left: 4px solid #38bdf8;
+    padding-left: 16px;
+}
+
+.课程网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.课程卡片 {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.课程卡片:hover {
+    transform: translateY(-6px);
+    border-color: #38bdf8;
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+}
+
+.卡片图标 {
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.课程卡片 h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.课程卡片 p {
+    color: #94a3b8;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.状态标签 {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.代码容器 {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 32px;
+}
+
+.CodeMirror {
+    height: 320px;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.运行按钮 {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.运行按钮:hover {
+    background-color: #0ea5e9;
+}
+
+.输出区域 {
+    background-color: #1e293b;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    min-height: 100px;
+    color: #22c55e;
+    font-family: "Consolas", monospace;
+}
+
+.页脚 {
+    text-align: center;
+    padding: 32px;
+    background-color: #1e293b;
+    color: #94a3b8;
+    margin-top: 64px;
+}
+
+.返回链接 {
+    display: inline-block;
+    margin-top: 8px;
+    color: #38bdf8;
+    text-decoration: none;
+}
