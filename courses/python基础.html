@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python基础 | 蔡欣淇</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+</head>
+<body>
+    <nav class="导航栏">
+        <div class="导航容器">
+            <h1 class="姓名">蔡欣淇</h1>
+            <p class="个人信息">广东科学技术职业学院 · 商务数据分析与应用专业</p >
+            <a href=" " class="返回链接">← 返回首页</a >
+        </div>
+    </nav>
+
+    <section class="代码容器">
+        <h2>Python 基础 — 在线代码练习</h2>
+        <p>在此编写、修改并运行Python代码，练习基础语法。</p >
+
+        <textarea id="代码编辑框">
+# ========== 示例代码 ==========
+print("欢迎使用在线代码运行工具！")
+
+姓名 = "蔡欣淇"
+专业 = "商务数据分析与应用"
+print(f"姓名：{姓名}")
+print(f"专业：{专业}")
+
+数字列表 = [12, 25, 36, 48, 55]
+总和 = sum(数字列表)
+平均值 = 总和 / len(数字列表)
+print(f"列表总和：{总和}")
+print(f"列表平均值：{平均值:.2f}")
+        </textarea>
+
+        <button class="运行按钮" id="运行按钮">运行代码</button>
+        <div class="输出区域" id="输出区域">代码运行结果将显示在这里……</div>
+    </section>
+
+    <footer class="页脚">
+        <p>© 2026 蔡欣淇 | 商务数据分析与应用专业</p >
+    </footer>
+
+    <script>
+        let 编辑器 = CodeMirror.fromTextArea(document.getElementById("代码编辑框"), {
+            mode: "python",
+            theme: "dracula",
+            lineNumbers: true,
+            indentUnit: 4,
+            tabSize: 4
+        });
+
+        let py环境;
+        async function 加载环境(){
+            py环境 = await loadPyodide();
+        }
+        加载环境();
+
+        document.getElementById("运行按钮").onclick = async function(){
+            let 结果框 = document.getElementById("输出区域");
+            if(!py环境){
+                结果框.innerText = "运行环境加载中，请稍候再点击！";
+                return;
+            }
+            结果框.innerText = "代码正在运行……";
+            let 代码内容 = 编辑器.getValue();
+            try{
+                py环境.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+                `);
+                py环境.runPython(代码内容);
+                let 运行结果 = py环境.runPython("sys.stdout.getvalue()");
+                结果框.innerText = 运行结果 || "代码执行完成，无输出内容";
+                结果框.style.color = "#22c55e";
+            }catch(错误信息){
+                结果框.innerText = "代码报错：" + 错误信息.message;
+                结果框.style.color = "#ef4444";
+            }
+        }
+    </script>
+</body>
+</html>
